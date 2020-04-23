@@ -17,7 +17,8 @@ public class User {
     private String lastName;
     private String role;
 
-    User() {}
+    User() {
+    }
 
     User(String firstName, String lastName, String role) {
         this.firstName = firstName;
@@ -30,7 +31,7 @@ public class User {
     }
 
     public void setName(String name) {
-        String[] parts =name.split(" ");
+        String[] parts = name.split(" ");
         this.firstName = parts[0];
         this.lastName = parts[1];
     }

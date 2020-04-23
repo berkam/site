@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,6 +9,7 @@ import javax.persistence.Id;
 
 @Data
 @Entity
+@NoArgsConstructor
 public class User {
 
     private @Id
@@ -16,9 +18,6 @@ public class User {
     private String firstName;
     private String lastName;
     private String role;
-
-    User() {
-    }
 
     User(String firstName, String lastName, String role) {
         this.firstName = firstName;

@@ -15,9 +15,8 @@ public class Product {
     private @Id
     @GeneratedValue
     Long id;
-    String name;
-    BigDecimal price;
-    ProductType type;
+    private String name;
+    private BigDecimal price;
 
     public Product(String name, BigDecimal price) {
         this.name = name;

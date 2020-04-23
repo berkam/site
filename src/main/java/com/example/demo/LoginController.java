@@ -1,3 +1,5 @@
+package com.example.demo;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,14 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class LoginController {
 
     @GetMapping("/login")
-    public String greetingForm(Model model) {
-        model.addAttribute("login", new Greeting());
+    public String loginForm(Model model) {
+        model.addAttribute("login", new Login());
         return "login";
     }
 
     @PostMapping("/login")
-    public String greetingSubmit(@ModelAttribute Greeting greeting, Model model) {
-        model.addAttribute("login", greeting);
+    public String loginSubmit(@ModelAttribute Login login, Model model) {
+        model.addAttribute("login", login);
         return "login";
     }
 }

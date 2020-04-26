@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import com.example.demo.model.Product;
+import com.example.demo.model.product.Product;
 import com.example.demo.model.ProductRepository;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;

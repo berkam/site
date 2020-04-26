@@ -1,7 +1,7 @@
 package com.example.demo;
 
 
-import com.example.demo.model.Product;
+import com.example.demo.model.product.Product;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.stereotype.Component;

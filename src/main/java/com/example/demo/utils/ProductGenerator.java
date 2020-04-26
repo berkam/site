@@ -1,7 +1,9 @@
 package com.example.demo.utils;
 
-import com.example.demo.model.Product;
-import com.example.demo.model.ProductType;
+import com.example.demo.model.product.Engine;
+import com.example.demo.model.product.FuelTank;
+import com.example.demo.model.product.Product;
+import com.example.demo.model.product.ProductType;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedReader;
@@ -25,17 +27,17 @@ public class ProductGenerator {
 
     public static Product getRandomProduct() {
         return switch (getRandomType()) {
-            case Engine -> createRandomProductFromCsv(ProductType.Engine, 20);
-            case FuelTank -> createRandomProductFromCsv(ProductType.FuelTank, 20);
+            case Engine -> createRandomProductFromCsv(ProductType.Engine, 20, Engine.class);
+            case FuelTank -> createRandomProductFromCsv(ProductType.FuelTank, 20, FuelTank.class);
             default -> new Product();
         };
     }
 
-    public static Product createRandomProductFromCsv(ProductType productType, int minVolume) {
+    public static Product createRandomProductFromCsv(ProductType productType, int minVolume,
+                                                     Class<? extends Product> productClass) {
         Random random = new Random();
         List<List<String>> data = productData.get(productType);
         List<String> value = data.get(random.nextInt(data.size()));
-
         Map<String, Integer> specification = new HashMap<>();
         for (int i = 1; i < data.size(); i++) {
             String[] strings = value.get(i).split(":");

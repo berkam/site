@@ -48,11 +48,8 @@ public class ProductGenerator {
     }
 
     public static ProductType getRandomType() {
-        Random random = new Random();
-        // return ProductType.values()[random.nextInt(ProductType.values().length)];
-        return ProductType.Engine;
+        return ProductType.values()[new Random().nextInt(ProductType.values().length)];
     }
-
 
     static List<List<String>> readCsv(String path) {
         List<List<String>> records = new ArrayList<>();

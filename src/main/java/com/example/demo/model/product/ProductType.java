@@ -8,6 +8,6 @@ public enum ProductType {
     FuelTank,
     Radar,
     Scanner,
-    Body,
-    Weapon
+    //Body,
+    //Weapon
 }

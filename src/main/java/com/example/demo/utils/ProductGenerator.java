@@ -1,7 +1,7 @@
 package com.example.demo.utils;
 
+import com.example.demo.model.product.Droid;
 import com.example.demo.model.product.Engine;
-import com.example.demo.model.product.FuelTank;
 import com.example.demo.model.product.Product;
 import com.example.demo.model.product.ProductType;
 import lombok.extern.slf4j.Slf4j;
@@ -16,42 +16,41 @@ import java.util.*;
 @Slf4j
 public class ProductGenerator {
 
-    private static Map<ProductType, List<List<String>>> productData;
+    private static final Map<ProductType, List<List<String>>> productData = new HashMap<>();
 
     static {
         for (ProductType productType : ProductType.values()) {
-            List<List<String>> data = readCsv("testData/" + productType.name() + ".csv");
+            List<List<String>> data = readCsv("src/main/resources/testData/" + productType.name() + ".csv");
             productData.put(productType, data);
         }
     }
 
     public static Product getRandomProduct() {
-        return switch (getRandomType()) {
-            case Engine -> createRandomProductFromCsv(ProductType.Engine, 20, Engine.class);
-            case FuelTank -> createRandomProductFromCsv(ProductType.FuelTank, 20, FuelTank.class);
-            default -> new Product();
-        };
-    }
-
-    public static Product createRandomProductFromCsv(ProductType productType, int minVolume,
-                                                     Class<? extends Product> productClass) {
         Random random = new Random();
-        List<List<String>> data = productData.get(productType);
-        List<String> value = data.get(random.nextInt(data.size()));
-        Map<String, Integer> specification = new HashMap<>();
-        for (int i = 1; i < data.size(); i++) {
-            String[] strings = value.get(i).split(":");
-            specification.put(strings[0], Integer.valueOf(strings[1]));
-        }
+        int level = random.nextInt(8);
+        ProductType randomType = getRandomType();
+        List<String> productTemplate = productData.get(ProductType.Engine).get(level);
 
-        return new Product(value.get(0), BigDecimal.ONE,
-                minVolume + random.nextInt(minVolume * 4),
-                productType, specification);
+        return switch (randomType) {
+            case Generator -> null;
+            case Capture -> null;
+            case Engine -> new Engine(productTemplate.get(0), BigDecimal.TEN, 20 + random.nextInt(80),
+                    ProductType.Engine, Integer.parseInt(productTemplate.get(1)), Integer.parseInt(productTemplate.get(2)));
+
+            case Droid -> new Droid(productTemplate.get(0), BigDecimal.TEN, 20 + random.nextInt(80),
+                    ProductType.Droid, Integer.parseInt(productTemplate.get(1)));
+            case FuelTank -> null;
+            case Radar -> null;
+            case Scanner -> null;
+            case Body -> null;
+            case Weapon -> null;
+        };
     }
 
     public static ProductType getRandomType() {
         Random random = new Random();
-        return ProductType.values()[random.nextInt(ProductType.values().length)];
+        // return ProductType.values()[random.nextInt(ProductType.values().length)];
+        return ProductType.Engine;
     }
 
 

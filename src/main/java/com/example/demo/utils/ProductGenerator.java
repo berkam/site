@@ -1,9 +1,7 @@
 package com.example.demo.utils;
 
-import com.example.demo.model.product.Droid;
-import com.example.demo.model.product.Engine;
-import com.example.demo.model.product.Product;
-import com.example.demo.model.product.ProductType;
+import com.example.demo.model.product.Scanner;
+import com.example.demo.model.product.*;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedReader;
@@ -29,21 +27,23 @@ public class ProductGenerator {
         Random random = new Random();
         int level = random.nextInt(8);
         ProductType randomType = getRandomType();
-        List<String> productTemplate = productData.get(ProductType.Engine).get(level);
+        List<String> productTemplate = productData.get(randomType).get(level);
 
         return switch (randomType) {
-            case Generator -> null;
-            case Capture -> null;
+            case Generator -> new Generator(productTemplate.get(0), BigDecimal.TEN, 20 + random.nextInt(80),
+                    ProductType.Generator, Integer.parseInt(productTemplate.get(1)));
+            case Capture -> new Capture(productTemplate.get(0), BigDecimal.TEN, 20 + random.nextInt(80),
+                    ProductType.Capture, Integer.parseInt(productTemplate.get(1)), Integer.parseInt(productTemplate.get(2)));
             case Engine -> new Engine(productTemplate.get(0), BigDecimal.TEN, 20 + random.nextInt(80),
                     ProductType.Engine, Integer.parseInt(productTemplate.get(1)), Integer.parseInt(productTemplate.get(2)));
-
             case Droid -> new Droid(productTemplate.get(0), BigDecimal.TEN, 20 + random.nextInt(80),
                     ProductType.Droid, Integer.parseInt(productTemplate.get(1)));
-            case FuelTank -> null;
-            case Radar -> null;
-            case Scanner -> null;
-            case Body -> null;
-            case Weapon -> null;
+            case FuelTank -> new FuelTank(productTemplate.get(0), BigDecimal.TEN, 20 + random.nextInt(80),
+                    ProductType.FuelTank, Integer.parseInt(productTemplate.get(1)));
+            case Radar -> new Radar(productTemplate.get(0), BigDecimal.TEN, 14 + random.nextInt(56),
+                    ProductType.Radar, Integer.parseInt(productTemplate.get(1)));
+            case Scanner -> new Scanner(productTemplate.get(0), BigDecimal.TEN, 14 + random.nextInt(56),
+                    ProductType.Scanner, Integer.parseInt(productTemplate.get(1)));
         };
     }
 

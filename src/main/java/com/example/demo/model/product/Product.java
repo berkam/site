@@ -12,13 +12,13 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
-@Table(name = "Products")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @NoArgsConstructor
 @AllArgsConstructor
+@Table(name = "Products")
+@EqualsAndHashCode(callSuper = true)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Product extends AbstractPersistable<Long> {
     protected String name;
     protected BigDecimal price;

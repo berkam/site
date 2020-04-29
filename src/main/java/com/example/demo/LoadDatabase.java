@@ -13,7 +13,9 @@ public class LoadDatabase {
     @Bean
     CommandLineRunner initDatabase(ProductRepository repository) {
         return args -> {
-            log.info("Preloading " + repository.save(ProductGenerator.getRandomProduct()));
+            for (int i = 0; i < 100; i++) {
+                log.info("Preloading " + repository.save(ProductGenerator.getRandomProduct()));
+            }
         };
     }
 }

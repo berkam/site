@@ -39,7 +39,7 @@ public class ProductGenerator {
             case Droid -> new Droid(productTemplate.get(0), BigDecimal.TEN, 20 + random.nextInt(80),
                     ProductType.Droid, Integer.parseInt(productTemplate.get(1)));
             case FuelTank -> new FuelTank(productTemplate.get(0), BigDecimal.TEN, 20 + random.nextInt(80),
-                    ProductType.FuelTank, Integer.parseInt(productTemplate.get(1)));
+                    ProductType.FuelTank, Double.parseDouble(productTemplate.get(1)));
             case Radar -> new Radar(productTemplate.get(0), BigDecimal.TEN, 14 + random.nextInt(56),
                     ProductType.Radar, Integer.parseInt(productTemplate.get(1)));
             case Scanner -> new Scanner(productTemplate.get(0), BigDecimal.TEN, 14 + random.nextInt(56),

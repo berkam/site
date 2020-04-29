@@ -14,9 +14,9 @@ import java.math.BigDecimal;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 public class FuelTank extends Product {
-    private int capacity;
+    private double capacity;
 
-    public FuelTank(String name, BigDecimal price, Integer volume, ProductType productType, int capacity) {
+    public FuelTank(String name, BigDecimal price, Integer volume, ProductType productType, double capacity) {
         super(name, price, volume, productType);
         this.capacity = capacity;
     }

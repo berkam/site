@@ -1,29 +1,23 @@
 package com.example.demo.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import java.math.BigDecimal;
 
 @Data
 @Entity
 @NoArgsConstructor
-public class User {
-
-    private @Id
-    @GeneratedValue
-    Long id;
+@EqualsAndHashCode(callSuper = true)
+public class User extends AbstractPersistable<Long> {
     private String firstName;
     private String lastName;
     private String role;
-
-    User(String firstName, String lastName, String role) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.role = role;
-    }
+    private Basket basket;
+    private BigDecimal money;
 
     public String getName() {
         return this.firstName + " " + this.lastName;

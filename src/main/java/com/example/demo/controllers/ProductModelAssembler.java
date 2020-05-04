@@ -1,5 +1,4 @@
-package com.example.demo;
-
+package com.example.demo.controllers;
 
 import com.example.demo.model.product.Product;
 import org.springframework.hateoas.EntityModel;

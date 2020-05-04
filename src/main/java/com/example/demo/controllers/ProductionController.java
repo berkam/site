@@ -1,7 +1,7 @@
-package com.example.demo;
+package com.example.demo.controllers;
 
-import com.example.demo.model.product.Product;
 import com.example.demo.model.ProductRepository;
+import com.example.demo.model.product.Product;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.web.bind.annotation.GetMapping;

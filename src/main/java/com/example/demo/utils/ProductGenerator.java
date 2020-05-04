@@ -18,7 +18,7 @@ public class ProductGenerator {
 
     static {
         for (ProductType productType : ProductType.values()) {
-            List<List<String>> data = readCsv("src/main/resources/testData/" + productType.name() + ".csv");
+            List<List<String>> data = readCsv("src/main/resources/testData/" + productType.name().toLowerCase() + ".csv");
             productData.put(productType, data);
         }
     }

@@ -1,17 +1,18 @@
 package com.example.demo.model;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
 
 @Data
 @Entity
-public class Basket {
-    private @Id
-    @GeneratedValue
-    Long id;
-
+@NoArgsConstructor
+@EqualsAndHashCode(callSuper = true)
+public class Basket extends AbstractPersistable<Long> {
     @OneToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    User user;
+    @JoinColumn(name = "person_id")
+    private Person person;
 }

@@ -21,4 +21,12 @@ public class Person extends AbstractPersistable<Long> {
     @ManyToOne(optional=false, cascade= CascadeType.ALL)
     @JoinColumn(name="person_id")
     private Address address;
+
+    public Person(String login, String password, BigDecimal money, Basket basket, Address address) {
+        this.login = login;
+        this.password = password;
+        this.money = money;
+        this.basket = basket;
+        this.address = address;
+    }
 }

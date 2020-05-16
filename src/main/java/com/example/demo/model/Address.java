@@ -24,4 +24,10 @@ public class Address extends AbstractPersistable<Long> {
     private String planet;
     @OneToMany(mappedBy = "address", fetch = FetchType.EAGER)
     private Collection<Person> tenants;
+
+    public Address(@NotNull String sector, @NotNull String system, @NotNull String planet) {
+        this.sector = sector;
+        this.system = system;
+        this.planet = planet;
+    }
 }

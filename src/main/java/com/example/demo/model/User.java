@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 import java.math.BigDecimal;
 
 @Data
@@ -16,6 +17,7 @@ public class User extends AbstractPersistable<Long> {
     private String firstName;
     private String lastName;
     private String role;
+    @OneToOne(optional = false, mappedBy = "user")
     private Basket basket;
     private BigDecimal money;
 

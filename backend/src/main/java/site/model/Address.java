@@ -1,5 +1,6 @@
-package demo.model;
+package site.model;
 
+import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
@@ -8,7 +9,6 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
 @Data

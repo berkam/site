@@ -1,4 +1,4 @@
-package demo.model.product;
+package site.model.product;
 
 public enum ProductType {
     Droid,

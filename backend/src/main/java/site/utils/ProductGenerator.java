@@ -1,9 +1,8 @@
-package demo.utils;
+package site.utils;
 
-import demo.model.product.*;
-import com.example.demo.model.product.*;
-import demo.model.product.Scanner;
 import lombok.extern.slf4j.Slf4j;
+import site.model.product.Scanner;
+import site.model.product.*;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

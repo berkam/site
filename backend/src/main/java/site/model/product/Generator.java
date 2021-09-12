@@ -1,4 +1,4 @@
-package demo.model.product;
+package site.model.product;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,11 +13,11 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public class Radar extends Product {
-    private int range;
+public class Generator extends Product {
+    private int power;
 
-    public Radar(String name, BigDecimal price, Integer volume, ProductType productType, int range) {
+    public Generator(String name, BigDecimal price, Integer volume, ProductType productType, int power) {
         super(name, price, volume, productType);
-        this.range = range;
+        this.power = power;
     }
 }

@@ -1,4 +1,4 @@
-package demo.model.product;
+package site.model.product;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

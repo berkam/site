@@ -1,4 +1,4 @@
-package demo.model.product;
+package site.model.product;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,10 +13,10 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public class Generator extends Product {
+public class Scanner extends Product {
     private int power;
 
-    public Generator(String name, BigDecimal price, Integer volume, ProductType productType, int power) {
+    public Scanner(String name, BigDecimal price, Integer volume, ProductType productType, int power) {
         super(name, price, volume, productType);
         this.power = power;
     }

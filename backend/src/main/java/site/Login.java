@@ -1,4 +1,4 @@
-package demo;
+package site;
 
 import lombok.Data;
 

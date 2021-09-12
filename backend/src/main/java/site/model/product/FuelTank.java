@@ -1,4 +1,4 @@
-package demo.model.product;
+package site.model.product;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;

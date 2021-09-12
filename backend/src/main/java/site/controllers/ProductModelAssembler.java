@@ -1,12 +1,10 @@
-package demo.controllers;
+package site.controllers;
 
-import demo.model.product.Product;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
+import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.stereotype.Component;
-
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
+import site.model.product.Product;
 
 @Component
 class ProductModelAssembler implements RepresentationModelAssembler<Product, EntityModel<Product>> {

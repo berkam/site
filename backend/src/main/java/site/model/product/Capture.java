@@ -1,4 +1,4 @@
-package demo.model.product;
+package site.model.product;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -13,11 +13,13 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-public class Droid extends Product {
-    private int power;
+public class Capture extends Product {
+    private int maxObjectSize;
+    private int range;
 
-    public Droid(String name, BigDecimal price, Integer volume, ProductType productType, int power) {
+    public Capture(String name, BigDecimal price, Integer volume, ProductType productType, int maxObjectSize, int range) {
         super(name, price, volume, productType);
-        this.power = power;
+        this.maxObjectSize = maxObjectSize;
+        this.range = range;
     }
 }

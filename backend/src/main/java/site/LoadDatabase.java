@@ -1,12 +1,11 @@
-package demo;
+package site;
 
-import com.example.demo.model.*;
-import demo.utils.ProductGenerator;
-import demo.model.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import site.model.*;
+import site.utils.ProductGenerator;
 
 import java.math.BigDecimal;
 

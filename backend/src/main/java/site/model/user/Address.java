@@ -1,4 +1,4 @@
-package site.model;
+package site.model.user;
 
 import com.sun.istack.NotNull;
 import lombok.Data;

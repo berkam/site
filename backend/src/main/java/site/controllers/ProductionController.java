@@ -5,23 +5,14 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import site.model.ProductRepository;
 import site.model.product.Product;
+import site.repositories.ProductRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-public class ProductionController {
-    private final ProductRepository repository;
-
-    private final ProductModelAssembler assembler;
-
-    ProductionController(ProductRepository repository,
-                         ProductModelAssembler assembler) {
-        this.repository = repository;
-        this.assembler = assembler;
-    }
+public record ProductionController(ProductRepository repository, ProductModelAssembler assembler) {
 
     @GetMapping("/products")
     CollectionModel<EntityModel<Product>> all() {

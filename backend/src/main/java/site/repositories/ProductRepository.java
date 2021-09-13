@@ -1,4 +1,4 @@
-package site.model;
+package site.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import site.model.product.Product;

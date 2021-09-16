@@ -14,4 +14,9 @@ import javax.persistence.Entity;
 public class Credential extends AbstractPersistable<Long> {
     private String login;
     private String password;
+
+    public Credential(String login, String password) {
+        this.login = login;
+        this.password = password;
+    }
 }

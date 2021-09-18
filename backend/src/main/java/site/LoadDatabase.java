@@ -1,23 +1,19 @@
 package site;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import site.repositories.ProductRepository;
-import site.utils.ProductGenerator;
 
 @Configuration
 @Slf4j
 public class LoadDatabase {
-    @Bean
-    CommandLineRunner initProductInDatabase(ProductRepository repository) {
-        return args -> {
-            for (int i = 0; i < 100; i++) {
-                log.info("Preloading " + repository.save(ProductGenerator.getRandomProduct()));
-            }
-        };
-    }
+//    @Bean
+//    CommandLineRunner initProductInDatabase(ProductRepository repository) {
+//        return args -> {
+//            for (int i = 0; i < 100; i++) {
+//                log.info("Preloading " + repository.save(ProductGenerator.getRandomProduct()));
+//            }
+//        };
+//    }
 
 //    @Bean
 //    CommandLineRunner initPersonInDatabase(UserRepository repository) {

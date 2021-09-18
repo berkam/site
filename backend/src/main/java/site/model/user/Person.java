@@ -13,8 +13,10 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class Person extends AbstractPersistable<Long> {
-    private String login;
-    private String password;
+
+    @ManyToOne
+    @JoinColumn(name = "credential_id")
+    private Credential credential;
     private BigDecimal money;
     @OneToOne(optional = false, mappedBy = "person")
     private Basket basket;
@@ -23,8 +25,6 @@ public class Person extends AbstractPersistable<Long> {
     private Address address;
 
     public Person(String login, String password, BigDecimal money, Basket basket, Address address) {
-        this.login = login;
-        this.password = password;
         this.money = money;
         this.basket = basket;
         this.address = address;

@@ -23,7 +23,7 @@ public class RegistrationTest {
     }
 
     @Test
-    public void addMeeting() throws Exception {
+    public void createUser() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders
                         .post("/createUser")
                         .param("email", TestData.getRandomEmail())

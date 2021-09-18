@@ -3,8 +3,6 @@ package site.repositories;
 import org.springframework.data.jpa.repository.JpaRepository;
 import site.model.user.Credential;
 
-public interface CredentialRepository extends JpaRepository<Credential, Long> {
+public interface CredentialRepository extends JpaRepository<Credential, String> {
 
-//    @Query("SELECT c.login, c.password FROM credential c WHERE c.login = :login")
-//    Credential findByLogin(@Param("login") String login);
 }

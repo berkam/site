@@ -9,6 +9,8 @@ import site.model.user.Credential;
 import site.repositories.CredentialRepository;
 import site.repositories.UserRepository;
 
+import java.util.Optional;
+
 @Slf4j
 @Component
 public class RegistrationImp implements RegistrationInterface {
@@ -20,14 +22,13 @@ public class RegistrationImp implements RegistrationInterface {
 
     @Override
     public ResponseEntity<?> createUser(String email, String password) {
-//        List<Credential> credentials = credentialRepository.findAll();
-//        Credential optionalCredential = credentialRepository.findByLogin(email);
-//        if (optionalCredential != null) {
-//            return ResponseEntity.badRequest().body("Email registered");
-//        } else {
-        credentialRepository.save(new Credential(email, password));
-        return ResponseEntity.ok().build();
-//        }
+        Optional<Credential> optionalCredential = credentialRepository.findById(email);
+        if (optionalCredential.isPresent()) {
+            return ResponseEntity.badRequest().body("Email registered");
+        } else {
+            credentialRepository.save(new Credential(email, password));
+            return ResponseEntity.ok().build();
+        }
     }
 
     @Override

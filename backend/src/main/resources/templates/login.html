@@ -6,8 +6,8 @@
 </head>
 <body>
 <h1>Login</h1>
-<form action="#" th:action="@{/login}" th:object="${login}" method="post">
-    <p>Login: <input type="text" th:field="*{login}"/></p>
+<form action="#" th:action="@{/site.login}" th:object="${site.login}" method="post">
+    <p>Login: <input type="text" th:field="*{site.login}"/></p>
     <p>Password: <input type="text" th:field="*{password}"/></p>
     <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
 </form>

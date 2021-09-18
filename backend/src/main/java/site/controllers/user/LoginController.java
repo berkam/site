@@ -10,15 +10,15 @@ import site.Login;
 @Controller
 public class LoginController {
 
-    @GetMapping("/login")
+    @GetMapping("/site.login")
     public String loginForm(Model model) {
-        model.addAttribute("login", new Login());
-        return "login";
+        model.addAttribute("site.login", new Login());
+        return "site.login";
     }
 
-    @PostMapping("/login")
+    @PostMapping("/site.login")
     public String loginSubmit(@ModelAttribute Login login, Model model) {
-        model.addAttribute("login", login);
-        return "login";
+        model.addAttribute("site.login", login);
+        return "site.login";
     }
 }

@@ -4,7 +4,7 @@ import org.springframework.http.ResponseEntity;
 
 public interface RegistrationInterface {
 
-    ResponseEntity<?> addUser(String email, String password);
+    ResponseEntity<?> createUser(String email, String password);
 
     ResponseEntity<?> restorePassword(String email, String password);
 }

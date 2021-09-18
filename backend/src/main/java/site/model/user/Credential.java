@@ -1,17 +1,16 @@
 package site.model.user;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Data
 @Entity
 @NoArgsConstructor
-@EqualsAndHashCode(callSuper = true)
-public class Credential extends AbstractPersistable<Long> {
+public class Credential {
+    @Id
     private String login;
     private String password;
 

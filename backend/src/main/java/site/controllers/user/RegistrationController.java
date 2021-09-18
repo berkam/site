@@ -13,8 +13,8 @@ public class RegistrationController {
     private RegistrationInterface registrationInterface;
 
     @PostMapping("/createUser")
-    public ResponseEntity<?> addUsers(String email, String password) {
-        return registrationInterface.addUser(email, password);
+    public ResponseEntity<?> createUser(String email, String password) {
+        return registrationInterface.createUser(email, password);
     }
 
     @PostMapping("/restorePassword")

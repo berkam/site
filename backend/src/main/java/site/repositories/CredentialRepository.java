@@ -1,14 +1,10 @@
 package site.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import site.model.user.Credential;
-
-import java.util.Optional;
 
 public interface CredentialRepository extends JpaRepository<Credential, Long> {
 
-    @Query("SELECT * FROM credential p WHERE login = :login")
-    Optional<Credential> findByLogin(@Param("login") String login);
+//    @Query("SELECT c.login, c.password FROM credential c WHERE c.login = :login")
+//    Credential findByLogin(@Param("login") String login);
 }

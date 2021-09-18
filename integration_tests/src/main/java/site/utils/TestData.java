@@ -1,4 +1,4 @@
-package utils;
+package site.utils;
 
 import java.util.UUID;
 

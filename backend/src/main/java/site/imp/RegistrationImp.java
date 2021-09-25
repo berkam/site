@@ -6,9 +6,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import site.interfaces.user.RegistrationInterface;
 import site.model.user.Credential;
+import site.model.user.Person;
 import site.repositories.CredentialRepository;
 import site.repositories.UserRepository;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 @Slf4j
@@ -26,7 +28,9 @@ public class RegistrationImp implements RegistrationInterface {
         if (optionalCredential.isPresent()) {
             return ResponseEntity.badRequest().body("Email registered");
         } else {
+            Credential credential = new Credential(email, password);
             credentialRepository.save(new Credential(email, password));
+            userRepository.save(new Person(credential, BigDecimal.ZERO, null, null));
             return ResponseEntity.ok().build();
         }
     }

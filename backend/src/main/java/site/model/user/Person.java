@@ -1,20 +1,19 @@
 package site.model.user;
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-@Data
+@Getter
+@Setter
+@ToString
 @Entity
-@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class Person extends AbstractPersistable<Long> {
 
-    @ManyToOne
+    @OneToOne(optional = false, mappedBy = "login")
     @JoinColumn(name = "credential_id")
     private Credential credential;
     private BigDecimal money;
@@ -24,7 +23,8 @@ public class Person extends AbstractPersistable<Long> {
     @JoinColumn(name = "person_id")
     private Address address;
 
-    public Person(String login, String password, BigDecimal money, Basket basket, Address address) {
+    public Person(Credential credential, BigDecimal money, Basket basket, Address address) {
+        this.credential = credential;
         this.money = money;
         this.basket = basket;
         this.address = address;

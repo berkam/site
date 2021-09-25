@@ -33,16 +33,14 @@ public class RegistrationImp implements RegistrationInterface {
 
     @Override
     public ResponseEntity<?> restorePassword(String email, String password) {
-//        Optional<Credential> optionalCredential = credentialRepository.findByLogin(email);
-//        LiscredentialRepository.findAll();
-//        if (optionalCredential.isPresent()) {
-//            Credential credential = optionalCredential.get();
-//            credential.setPassword(password);
-//            credentialRepository.save(credential);
-//            return ResponseEntity.ok().build();
-//        } else {
-//            return ResponseEntity.badRequest().body("Email not registered");
-//        }
-        return ResponseEntity.ok().build();
+        Optional<Credential> optionalCredential = credentialRepository.findById(email);
+        if (optionalCredential.isPresent()) {
+            Credential credential = optionalCredential.get();
+            credential.setPassword(password);
+            credentialRepository.save(credential);
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.badRequest().body("Email not registered");
+        }
     }
 }

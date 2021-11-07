@@ -5,28 +5,52 @@ import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 @Getter
 @Setter
-@ToString
 @Entity
-@EqualsAndHashCode(callSuper = true)
-public class Person extends AbstractPersistable<Long> {
+@NoArgsConstructor
+public class Person {
 
-    @OneToOne(optional = false, mappedBy = "login")
-    @JoinColumn(name = "credential_id")
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "credential_id", referencedColumnName = "login")
     private Credential credential;
     private BigDecimal money;
-    @OneToOne(optional = false, mappedBy = "person")
-    private Basket basket;
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
-    @JoinColumn(name = "person_id")
-    private Address address;
+//    @OneToOne(optional = false, mappedBy = "person")
+//    private Basket basket;
+//    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+//    @JoinColumn(name = "person_id")
+//    private Address address;
 
-    public Person(Credential credential, BigDecimal money, Basket basket, Address address) {
+    public Person(Credential credential, BigDecimal money) {
         this.credential = credential;
         this.money = money;
-        this.basket = basket;
-        this.address = address;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Person person = (Person) o;
+        return Objects.equals(id, person.id) && Objects.equals(credential, person.credential)
+                && Objects.equals(money, person.money);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, credential, money);
+    }
+
+    @Override
+    public String toString() {
+        return "Person{" +
+                "id=" + id +
+                ", credential=" + credential.getLogin() +
+                ", money=" + money +
+                '}';
     }
 }

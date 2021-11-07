@@ -1,6 +1,5 @@
 package site.imp;
 
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -13,7 +12,6 @@ import site.repositories.UserRepository;
 import java.math.BigDecimal;
 import java.util.Optional;
 
-@Slf4j
 @Component
 public class RegistrationImp implements RegistrationInterface {
 
@@ -29,8 +27,12 @@ public class RegistrationImp implements RegistrationInterface {
             return ResponseEntity.badRequest().body("Email registered");
         } else {
             Credential credential = new Credential(email, password);
-            credentialRepository.save(new Credential(email, password));
-            userRepository.save(new Person(credential, BigDecimal.ZERO, null, null));
+            Person person = new Person(null, BigDecimal.ZERO);
+            person = userRepository.save(person);
+            credential.setPerson(person);
+            person.setCredential(credential);
+            credentialRepository.save(credential);
+            userRepository.save(person);
             return ResponseEntity.ok().build();
         }
     }

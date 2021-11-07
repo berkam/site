@@ -1,7 +1,5 @@
 package site.login;
 
-import org.junit.jupiter.api.DisplayNameGeneration;
-import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,7 +7,6 @@ import site.steps.wrapper.RegistrationWrapperSteps;
 import site.utils.TestData;
 
 @SpringBootTest
-@DisplayNameGeneration(DisplayNameGenerator.Simple.class)
 public class RegistrationTest {
 
     @Autowired
@@ -18,6 +15,7 @@ public class RegistrationTest {
     @Test
     public void createUser() {
         registrationSteps.createUser(TestData.getRandomEmail(), TestData.getRandomEmail());
+
     }
 
     @Test

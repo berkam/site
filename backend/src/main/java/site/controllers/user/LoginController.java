@@ -1,24 +1,19 @@
 package site.controllers.user;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import site.Login;
+import site.interfaces.user.LoginInterface;
 
 @Controller
 public class LoginController {
 
-    @GetMapping("/site.login")
-    public String loginForm(Model model) {
-        model.addAttribute("site.login", new Login());
-        return "site.login";
-    }
+    @Autowired
+    private LoginInterface loginInterface;
 
-    @PostMapping("/site.login")
-    public String loginSubmit(@ModelAttribute Login login, Model model) {
-        model.addAttribute("site.login", login);
-        return "site.login";
+    @PostMapping("/login")
+    public ResponseEntity<?> createUser(String email, String password) {
+        return loginInterface.login(email, password);
     }
 }

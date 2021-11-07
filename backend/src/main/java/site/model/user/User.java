@@ -1,7 +1,8 @@
 package site.model.user;
 
-import lombok.*;
-import org.springframework.data.jpa.domain.AbstractPersistable;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -11,7 +12,7 @@ import java.util.Objects;
 @Setter
 @Entity
 @NoArgsConstructor
-public class Person {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -26,7 +27,7 @@ public class Person {
 //    @JoinColumn(name = "person_id")
 //    private Address address;
 
-    public Person(Credential credential, BigDecimal money) {
+    public User(Credential credential, BigDecimal money) {
         this.credential = credential;
         this.money = money;
     }
@@ -35,9 +36,9 @@ public class Person {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Person person = (Person) o;
-        return Objects.equals(id, person.id) && Objects.equals(credential, person.credential)
-                && Objects.equals(money, person.money);
+        User user = (User) o;
+        return Objects.equals(id, user.id) && Objects.equals(credential, user.credential)
+                && Objects.equals(money, user.money);
     }
 
     @Override

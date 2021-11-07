@@ -3,30 +3,37 @@ package site.login;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import site.steps.logic.RegistrationSteps;
 import site.steps.wrapper.RegistrationWrapperSteps;
-import site.utils.TestData;
+
+import static site.utils.TestData.getRandomEmail;
+import static site.utils.TestData.getRandomPassword;
 
 @SpringBootTest
 public class RegistrationTest {
 
     @Autowired
-    RegistrationWrapperSteps registrationSteps;
+    RegistrationWrapperSteps registrationWrapperSteps;
+    @Autowired
+    RegistrationSteps registrationSteps;
 
     @Test
     public void createUser() {
-        registrationSteps.createUser(TestData.getRandomEmail(), TestData.getRandomEmail());
-
+        String email = getRandomEmail();
+        String password = getRandomPassword();
+        registrationWrapperSteps.createUser(email, password);
+        registrationSteps.checkUserExists(email, password);
     }
 
     @Test
     public void restorePassword() {
-        String email = TestData.getRandomEmail();
-        registrationSteps.createUser(email, TestData.getRandomEmail());
-        registrationSteps.restorePassword(email, TestData.getRandomEmail());
+        String email = getRandomEmail();
+        registrationWrapperSteps.createUser(email, getRandomEmail());
+        registrationWrapperSteps.restorePassword(email, getRandomEmail());
     }
 
     @Test
     public void restorePasswordNegative() {
-        registrationSteps.restorePassword(TestData.getRandomEmail(), TestData.getRandomEmail());
+        registrationWrapperSteps.restorePassword(getRandomEmail(), getRandomEmail());
     }
 }

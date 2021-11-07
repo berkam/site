@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import site.interfaces.user.RegistrationInterface;
 import site.model.user.Credential;
-import site.model.user.Person;
+import site.model.user.User;
 import site.repositories.CredentialRepository;
 import site.repositories.UserRepository;
 
@@ -27,12 +27,12 @@ public class RegistrationImp implements RegistrationInterface {
             return ResponseEntity.badRequest().body("Email registered");
         } else {
             Credential credential = new Credential(email, password);
-            Person person = new Person(null, BigDecimal.ZERO);
-            person = userRepository.save(person);
-            credential.setPerson(person);
-            person.setCredential(credential);
+            User user = new User(null, BigDecimal.ZERO);
+            user = userRepository.save(user);
+            credential.setUser(user);
+            user.setCredential(credential);
             credentialRepository.save(credential);
-            userRepository.save(person);
+            userRepository.save(user);
             return ResponseEntity.ok().build();
         }
     }

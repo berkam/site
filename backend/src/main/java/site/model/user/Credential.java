@@ -16,7 +16,7 @@ public class Credential {
     private String login;
     private String password;
     @OneToOne(mappedBy = "credential")
-    private Person person;
+    private User user;
 
     public Credential(String login, String password) {
         this.login = login;
@@ -28,7 +28,7 @@ public class Credential {
         return "Credential{" +
                 "login='" + login + '\'' +
                 ", password='" + password + '\'' +
-                ", person=" + person.getId() +
+                ", person=" + user.getId() +
                 '}';
     }
 }

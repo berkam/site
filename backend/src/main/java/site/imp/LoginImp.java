@@ -5,13 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import site.interfaces.user.LoginInterface;
-import site.interfaces.user.RegistrationInterface;
 import site.model.user.Credential;
-import site.model.user.Person;
 import site.repositories.CredentialRepository;
 import site.repositories.UserRepository;
 
-import java.math.BigDecimal;
 import java.util.Optional;
 
 @Slf4j

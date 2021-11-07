@@ -1,7 +1,11 @@
 package site.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
-import site.model.user.Person;
+import org.springframework.stereotype.Repository;
+import site.model.user.User;
 
-public interface UserRepository extends JpaRepository<Person, Long> {
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+
+
 }
